@@ -3,32 +3,36 @@
 path2sub_module = project/data
 branch_name = main
 
+code-check-sub-module-modify: code-sub-module-modify
+	rm -fr $@ \
+	&& git clone --recurse-submodules ./code-origin $@ \
+	&& test -e $(CURDIR)/$@/$(path2sub_module)/new-file.txt && echo OK
+
 code-sub-module-modify: code-check-sub-module-exists
 	rm -fr $@ \
 	&& git clone --recurse-submodules ./code-origin $@ \
-	&& test -e $@/$(path2sub_module)/new-file.txt \
-	|| cd $@/$(path2sub_module) \
+	&& test -e $(CURDIR)/$@/$(path2sub_module)/new-file.txt \
+	|| cd $(CURDIR)/$@/$(path2sub_module) \
 	&& touch new-file.txt \
 	&& git checkout $(branch_name) \
 	&& git add new-file.txt \
 	&& git commit --message="modifying submodule contents" \
 	&& git push \
 	&& cd $(CURDIR)/$@ \
-	&& git status \
-	&& git add .gitmodules \
+	&& git stage $(path2sub_module) \
 	&& git commit --message="modifying submodule contents" \
 	&& git push
 
 code-check-sub-module-exists: code-add-sub-module
 	rm -fr $@ \
 	&& git clone --recurse-submodules ./code-origin $@ \
-	&& test -e $@/$(path2sub_module) && echo OK
+	&& test -e $(CURDIR)/$@/$(path2sub_module) && echo OK
 
 code-add-sub-module: code-origin data-origin
 	rm -fr $@ \
 	&& git clone --recurse-submodules ./code-origin $@ \
-	&& test -e $@/$(path2sub_module) \
-	|| cd $@ \
+	&& test -e $(CURDIR)/$@/$(path2sub_module) \
+	|| cd $(CURDIR)/$@ \
 	&& git submodule add $(CURDIR)/data-origin $(path2sub_module) \
 	&& git commit --message="adding submodule" \
 	&& git push
@@ -37,7 +41,7 @@ define make-origin
 $(1)-origin:
 	rm -fr $(1)-repo \
 	&& mkdir $(1)-repo \
-	&& cd $(1)-repo \
+	&& cd $(CURDIR)/$(1)-repo \
 	&& git init \
 	&& touch .gitignore \
 	&& git add .gitignore \
