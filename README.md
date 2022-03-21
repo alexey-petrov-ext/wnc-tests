@@ -1,12 +1,12 @@
 # Experiment the usage of sub-module in a personal space
-- Presents some usefull links of Git `submodule` best practices
-- Contains scenarious of working with Git Submodules from command line (incorporated to `Makefile`)
+- Presents some usefull links of Git `sub-module` best practices
+- Contains scenarious of working with Git Submodules from command line (incorporated to [Makefile](Makefile))
 
 # Support from UI
 
 ## Visual Studio
 Does not directly support `Git-submodule` feature. It is possible to perform some basic scenarious by using `multi-repository` feature
-    ![multi-repo](MultiRepo-GitChanges-1-768x443.png)
+    ![multi-repo](pics/MultiRepo-GitChanges-1-768x443.png)
 **BUT** support for some of the important basic features is still msissing, namely
   1. Adding/removing Git `sub-modules`
   2. Initializing/updating/cloning Git `sub-modules`
@@ -19,22 +19,22 @@ More details can be found here:
 
 Has an extesive support on working with sub-modules. For more details read corresponding chapters at [Manual](https://tortoisegit.org/docs/tortoisegit/tgit-dug-submodules.html).
 
-![Git Submodule context menu](ContextMenuSubmodules.png)
+![Git Submodule context menu](pics/ContextMenuSubmodules.png)
 
 ## [Git Extensions](https://git-extensions-documentation.readthedocs.io/en/release-3.4/index.html)
 
 Has an extesive support on working with sub-modules. For more details read corresponding chapters at [documentation](https://git-extensions-documentation.readthedocs.io/en/release-3.4/submodules).
 
-![Git Submodule main menu](submodules-ext.png)
+![Git Submodule main menu](pics/submodules-ext.png)
 
 ## [VS Code](https://code.visualstudio.com/)
 - Support Git `sub-module` out of the box
 
-    ![vscode-out-of-the-box](vscode-submodule.png)
+    ![vscode-out-of-the-box](pics/vscode-submodule.png)
 
 - To get more flexibility a [Git (Submodule) Assistant](https://marketplace.visualstudio.com/items?itemName=ivanhofer.git-assistant) extension can be use
 
-    ![vscode-extension](update_submodules.png)
+    ![vscode-extension](pics/update_submodules.png)
 
 # Helpful links
 
